@@ -1,6 +1,6 @@
 // Ubiquity Google calculator script
 // by Zach Carter http://zaa.ch
-// MLP, MIT, GPL licensed 2008
+// MPL, MIT licensed 2008
 
 (function(){
 
@@ -24,7 +24,7 @@ CmdUtils.CreateCommand({
   preview: function(pblock, statusText) {
     var pb = pblock;
     pblock.innerHTML = 'Enter an expression to evaluate.';
-    if(statusText.text.length > 2){
+    if(statusText.text.length > 1){
       jQuery.get("http://www.google.com/search",{q: statusText.text}, function(data){pb.innerHTML = scrapeResult(data);});
       pblock.innerHTML = 'Loading result...';
     }
@@ -35,8 +35,7 @@ CmdUtils.CreateCommand({
       displayMessage("Please enter an expression to evaulate.");
       return;
     }
-    
-    jQuery.get("http://www.google.com/search",{q: statusText.text}, function(data){displayMessage(scrapeResult(data))});
+    Utils.openUrlInBrowser('http://www.google.com/search?q=' + encodeURIComponent(statusText.text));  
   }
 });
 
