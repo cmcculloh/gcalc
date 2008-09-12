@@ -19,7 +19,7 @@ CmdUtils.CreateCommand({
   description: "Use Google Search's calculator capibilities.",
   author: { name: "Zach Carter", email: "zack.carter@gmail.com", homepage: "http://zaa.ch/"},
   
-  takes: {status: noun_arb_text},
+  takes: {expression: noun_arb_text},
 
   preview: function(pblock, statusText) {
     var pb = pblock;
